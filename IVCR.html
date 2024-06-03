@@ -39,44 +39,12 @@
         <p>Surveillance videos are an essential component of daily life with various critical applications, particularly in public security. However, current surveillance video tasks mainly focus on classifying and localizing anomalous events. Existing methods are limited to detecting and classifying the predefined events with unsatisfactory semantic understanding, although they have obtained considerable performance.  
 To address this issue, we propose a new research direction of surveillance video-and-language understanding, and construct the first multimodal surveillance video dataset. We manually annotate the real-world surveillance dataset UCF-Crime with fine-grained event content and timing. Our newly annotated dataset, UCA UCF-Crime Annotation), contains 23,542 sentences, with an average length of 20 words, and its annotated videos are as long as 110.7 hours.
 Furthermore, we benchmark SOTA models for four multimodal tasks on this newly created dataset, which serve as new baselines for surveillance video-and-language understanding. Through our experiments, we find that mainstream models used in previously publicly available datasets perform poorly on surveillance video, which demonstrates the new challenges in surveillance video-and-language understanding. To validate the effectiveness of our UCA, we conducted experiments on multimodal anomaly detection. The results demonstrate that our multimodal surveillance learning can improve the performance of conventional anomaly detection tasks. All the experiments highlight the necessity of constructing this dataset to advance surveillance AI. </p>
-        <p>The following figure shows Annotation Examples in our UCA dataset.</p>
-		<img src="https://i.postimg.cc/ZqyVxR0W/fig-visual.jpg" alt="Abstract Image">
-		
+       
 	<hr>	
-		<h2>Dataset Description</h2>		
-	
-		<h3>Comparative Analysis with Other Video Datasets</h3>
-		<p>The following table provides a statistical comparison between the UCA dataset and other traditional video datasets in multimodal learning tasks. Our dataset is specifically designed for the surveillance domain, featuring the longest average word count per sentence.</p>
-		<img src="https://s2.loli.net/2023/12/04/pu2UQBCXsPYxikF.png" alt="Comparative Analysis Table">
-	
-		<h3>Quality and Fairness Assurance</h3>
-		<p>During the video collection process for UCA, we conducted a meticulous screening of the original UCF-Crime dataset to filter out videos of lower quality. This ensures the quality and fairness of our UCA dataset. The low-quality videos identified had issues like repetitions, severe obstructions, or excessively fast playback speeds, which impeded the clarity of manual annotations and the precision of event time localization.</p>
-		<p>Consequently, we removed 46 videos from the original UCF-Crime dataset, resulting in a total of 1,854 videos for UCA. The data split in UCA is outlined in the table below.</p>
-		<img src="https://s2.loli.net/2023/12/04/TwCVjQvGf5PmU6H.png" alt="UCA Data Split Table">
-		
+		<h2>Interactive Video Corpus Retrieval Dataset</h2>		
+		<h3>Dataset Collection and Annotation</h3>
+		<h3>Dataset Analysis.</h3>
 		<h3>Parts of Speech Distribution</h3>
-		<p>The table below displays the number of query descriptions for the events we labeled and the average number of words per query. The average word count in our annotations is approximately 20 words. The distribution of parts of speech (nouns, verbs, and adjectives) is approximately 2:2:1 in all sentences of the Train, Val, and Test splits.</p>
-		<img src="https://i.postimg.cc/DyQDMyqg/tab-3.png" alt="Parts of Speech Distribution">
-	
-		<h3>Format Explanation</h3>
-		<p>The UCA dataset is available in two formats: <code>txt</code> and <code>json</code>.</p>
-		
-		<p><strong>txt format:</strong></p>
-		<pre>
-			VideoName StartTime EndTime ##Video event description
-		</pre>
-	
-		<p><strong>json format:</strong></p>
-		<pre>
-			"VideoName": {
-				"duration": xx.xx,
-				"timestamps": [
-					[StartTime 1, EndTime 1],
-					[StartTime 2, EndTime 2]
-				],
-				"sentences": ["Video event description 1", "Video event description 2"]
-			}
-		</pre>
 		<hr>
 
         <h2>Experimental Tasks</h2>

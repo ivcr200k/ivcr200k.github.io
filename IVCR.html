@@ -5,6 +5,17 @@
     <title>IVCR-200K: A Large-Scale Multi-turn Dialogue Benchmark for Interactive Video Corpus Retrieval</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" media="screen"/>
+	.image-container {
+    display: flex;
+}
+
+.image-container img {
+    width: 33.33%; /* 每张图片占据容器的1/3宽度 */
+    height: auto; /* 让高度自适应宽度变化 */
+    margin: 0; /* 去除默认的外边距 */
+    padding: 0; /* 去除默认的内边距 */
+    box-sizing: border-box; /* 让边框和内边距计入宽度 */
+}
 </head>
 <body>
     <div class="container">
@@ -48,13 +59,11 @@ our dataset and framework. The dataset and code are available at xxx.</P>
 	    <p>To implement an interactive video retrieval system, we constructed a multi-turn, conversational
 dataset comprising 193,434 interactions sourced from 5 video repositories. This dataset encompasses
 functionalities such as video retrieval, video moment retrieval, and natural dialogue.</p>
-	      <img src="img/picture.jpg" alt="GIF Image"><br><br>
-	    <p>A person is skiing down the slope, gracefully weaving through the snowflakes, as if dancing to a symphony of snow, exuding an atmosphere of vitality and adventure.</p>
-	<img src="gif/1.gif" alt="Image 1" style="width: 600px; height: auto;"><br>
-	    <p>In the dimly lit indoor environment, a group of people is moving around the court. They are swinging their rackets, fully focused on playing tennis. The ball is flying back and forth inside the court, with each swing emitting a combination of power and skill.</p>
-    <img src="gif/3.gif" alt="Image 2" style="width: 600px; height: auto;"><br>
-	    <p>On the sunny street, two people glide past on skateboards, effortlessly weaving through the crowd. They leave trails on the road, seemingly enjoying the sensation of the wind against their faces while showcasing their skills and balance.</p>
-    <img src="gif/4.gif" alt="Image 3" style="width: 600px; height: auto;"><br>
+	    <div class="image-container">
+    <img src="gif/1.gif" alt="Image 1">
+    <img src="gif/2.gif" alt="Image 2">
+    <img src="gif/3.gif" alt="Image 3">
+</div>
 	        <hr>
 	<h2>Visualization Quality</h2>
 	      <img src="a.png" alt="GIF Image" loop>

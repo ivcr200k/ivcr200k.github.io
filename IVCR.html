@@ -16,6 +16,23 @@
             max-width: calc(50% - 20px);  /* 修改这一行 */
             margin: 10px;  /* 添加这一行 */
         }
+	     table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        margin-bottom: 10px;
+    }
     </style>
 </head>
 <body>
@@ -73,5 +90,86 @@ functionalities such as video retrieval, video moment retrieval, and natural dia
 	<h2>Framwork</h2>
 	    <img src="img/tone.png" alt="Paper">
 	        <hr>
+	    <h2>Video Search Rankings</h2>
+
+<form id="crudForm">
+    <label for="Types">Types:</label>
+    <input type="text" id="Types" name="Types">
+    <label for="Methods">Methods:</label>
+    <input type="text" id="Methods" name="Methods">
+    <label for="R@10">R@10:</label>
+    <input type="text" id="R@10" name="R@10">
+    <label for="R@1_IoU_0.5">R@1 IoU=0.5:</label>
+    <input type="text" id="R@1_IoU_0.5" name="R@1 IoU=0.5">
+    <label for="R@1_IoU_0.7">R@1 IoU=0.7:</label>
+    <input type="text" id="R@1_IoU_0.7" name="R@1 IoU=0.7">
+    <label for="BLUE-4">BLUE-4:</label>
+    <input type="text" id="BLUE-4" name="BLUE-4">
+    <label for="GPT-4_Score">GPT-4 Score:</label>
+    <input type="text" id="GPT-4_Score" name="GPT-4 Score">
+    <button type="button" onclick="addData()">Add</button>
+</form>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Types</th>
+            <th>Methods</th>
+            <th>R@10</th>
+            <th>R@1 IoU=0.5</th>
+            <th>R@1 IoU=0.7</th>
+            <th>BLUE-4</th>
+            <th>GPT-4 Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data will be inserted here dynamically -->
+    </tbody>
+</table>
+
+<script>
+    function addData() {
+        var Types = document.getElementById("Types").value;
+        var Methods = document.getElementById("Methods").value;
+        var R_10 = document.getElementById("R@10").value;
+        var R_1_IoU_0_5 = document.getElementById("R@1_IoU_0.5").value;
+        var R_1_IoU_0_7 = document.getElementById("R@1_IoU_0.7").value;
+        var BLUE_4 = document.getElementById("BLUE-4").value;
+        var GPT_4_Score = document.getElementById("GPT-4_Score").value;
+        
+        var table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        var cell7 = newRow.insertCell(6);
+        
+        cell1.innerHTML = Types;
+        cell2.innerHTML = Methods;
+        cell3.innerHTML = R_10;
+        cell4.innerHTML = R_1_IoU_0_5;
+        cell5.innerHTML = R_1_IoU_0_7;
+        cell6.innerHTML = BLUE_4;
+        cell7.innerHTML = GPT_4_Score;
+    }
+
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
+    function editRow(btn) {
+        var row = btn.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+        var Types = cells[0].innerHTML;
+        var Methods = cells[1].innerHTML;
+        document.getElementById("Types").value = Types;
+        document.getElementById("Methods").value = Methods;
+        row.parentNode.removeChild(row);
+    }
+</script>
 </body>
 </html>

@@ -30,8 +30,12 @@ p {
 
 }
 
-.icon-container {
-    text-align: center;
+.container { 
+    max-width: 1200px;
+    width: 90%; 
+    margin: 0 auto; 
+    padding: 0 15%;  
+    box-sizing: border-box;  /* 添加这一行 */
 }
 
 .icon-item a {

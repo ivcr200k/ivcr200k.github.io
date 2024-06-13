@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IVCR-200K: A Large-Scale Multi-turn Dialogue Benchmark for Interactive Video Corpus Retrieval</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .image-container img {
+        flex: 0 0 calc(50% - 20px); /* 修改这一行 */
+        max-width: calc(50% - 20px); /* 修改这一行 */
+        margin: 10px; /* 添加这一行 */
+      }
+      .fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        margin: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <hr />
+      <h1>Leaderboards</h1>
+      <table id="dataTable" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>user</th>
+            <th>R@1</th>
+            <th>R@1 IoU=0.5</th>
+            <th>R@1 IoU=0.7</th>
+            <th>BLUE-4</th>
+            <th>GPT-4 Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be inserted here dynamically -->
+        </tbody>
+      </table>
+
+      <table class="table table-striped table-bordered fixed-bottom">
+        <thead class="thead-dark">
+          <tr>
+            <th>user</th>
+            <th>R@1</th>
+            <th>R@1 IoU=0.5</th>
+            <th>R@1 IoU=0.7</th>
+            <th>BLUE-4</th>
+            <th>GPT-4 Score</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="user" name="user" class="form-control" /></td>
+            <td><input type="text" id="R@1" name="R@1" class="form-control" /></td>
+            <td><input type="text" id="R@1_IoU_0.5" name="R@1 IoU=0.5" class="form-control" /></td>
+            <td><input type="text" id="R@1_IoU_0.7" name="R@1 IoU=0.7" class="form-control" /></td>
+            <td><input type="text" id="BLUE-4" name="BLUE-4" class="form-control" /></td>
+            <td><input type="text" id="GPT-4_Score" name="GPT-4 Score" class="form-control" /></td>
+            <td><button type="button" onclick="addData()" class="btn btn-primary">submit</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <script>
+        function addData() {
+          var user = document.getElementById('user').value
+          var R_10 = document.getElementById('R@1').value
+          var R_1_IoU_0_5 = document.getElementById('R@1_IoU_0.5').value
+          var R_1_IoU_0_7 = document.getElementById('R@1_IoU_0.7').value
+          var BLUE_4 = document.getElementById('BLUE-4').value
+          var GPT_4_Score = document.getElementById('GPT-4_Score').value
+
+          var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0]
+          var newRow = table.insertRow(table.rows.length)
+          var cell1 = newRow.insertCell(0)
+          var cell2 = newRow.insertCell(1)
+          var cell3 = newRow.insertCell(2)
+          var cell4 = newRow.insertCell(3)
+          var cell5 = newRow.insertCell(4)
+          var cell6 = newRow.insertCell(5)
+
+          cell1.innerHTML = user
+          cell2.innerHTML = R_10
+          cell3.innerHTML = R_1_IoU_0_5
+          cell4.innerHTML = R_1_IoU_0_7
+          cell5.innerHTML = BLUE_4
+          cell6.innerHTML = GPT_4_Score
+        }
+
+        function deleteRow(btn) {
+          var row = btn.parentNode.parentNode
+          row.parentNode.removeChild(row)
+        }
+
+        function editRow(btn) {
+          var row = btn.parentNode.parentNode
+          var cells = row.getElementsByTagName('td')
+          var Types = cells[0].innerHTML
+          var Methods = cells[1].innerHTML
+          document.getElementById('user').value = user
+          row.parentNode.removeChild(row)
+        }
+
+        window.onload = function () {
+          adjustTableWidth()
+        }
+
+        window.onresize = function () {
+          adjustTableWidth()
+        }
+
+        function adjustTableWidth() {
+          var dataTableWidth = document.getElementById('dataTable').offsetWidth
+          var fixedBottomTable = document.querySelector('.fixed-bottom')
+          fixedBottomTable.style.width = dataTableWidth + 'px'
+        }
+      </script>
+    </div>
+  </body>
+</html>

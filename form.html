@@ -61,7 +61,14 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Data will be inserted here dynamically -->
+          <tr>
+            <td>InterLLaVA</td>
+            <td>58.84</td>
+            <td>12.83</td>
+            <td>7.54</td>
+            <td>0.42</td>
+            <td>0.76</td>
+          </tr>
         </tbody>
       </table>
 
@@ -80,11 +87,11 @@
         <tbody>
           <tr>
             <td><input type="text" id="user" name="user" class="form-control" /></td>
-            <td><input type="text" id="R@1" name="R@1" class="form-control" /></td>
-            <td><input type="text" id="R@1_IoU_0.5" name="R@1 IoU=0.5" class="form-control" /></td>
-            <td><input type="text" id="R@1_IoU_0.7" name="R@1 IoU=0.7" class="form-control" /></td>
-            <td><input type="text" id="BLUE-4" name="BLUE-4" class="form-control" /></td>
-            <td><input type="text" id="GPT-4_Score" name="GPT-4 Score" class="form-control" /></td>
+            <td><input type="number" id="R@1" name="R@1" class="form-control" step="0.01" /></td>
+            <td><input type="number" id="R@1_IoU_0.5" name="R@1 IoU=0.5" class="form-control" step="0.01" /></td>
+            <td><input type="number" id="R@1_IoU_0.7" name="R@1 IoU=0.7" class="form-control" step="0.01" /></td>
+            <td><input type="number" id="BLUE-4" name="BLUE-4" class="form-control" step="0.01" /></td>
+            <td><input type="number" id="GPT-4_Score" name="GPT-4 Score" class="form-control" step="0.01" /></td>
             <td><button type="button" onclick="addData()" class="btn btn-primary">submit</button></td>
           </tr>
         </tbody>

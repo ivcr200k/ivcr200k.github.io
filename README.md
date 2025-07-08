@@ -48,7 +48,7 @@ wget https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/In
 ```
 #### Pre-trained Language Decoder (LLaMA-2-7B) and Video Encoder (Video Q-Former of Video-LLaMA)
 
-Use `git-lfs` to download weights of [Video-LLaMA (7B)](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Finetuned/tree/main):
+Use `git-lfs` to download weights of [Video-LLaMA (7B)](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf):
 ```bash
 git lfs install
 git clone https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Finetuned

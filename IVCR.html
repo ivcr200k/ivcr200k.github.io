@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IVCR-200K: A Large-Scale Multi-turn Dialogue Benchmark for Interactive Video Corpus Retrieval</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="screen"/>
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .image-container img {
+            flex: 0 0 calc(50% - 20px);  /* 修改这一行 */
+            max-width: calc(50% - 20px);  /* 修改这一行 */
+            margin: 10px;  /* 添加这一行 */
+        }
+	     table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="project-title">IVCR-200K: A Large-Scale Multi-turn Dialogue Benchmark for Interactive Video Corpus Retrieval</h1>
+        <div class="icon-container">
+            <ul class="icon-list">
+                <li class="icon-item">
+                    <a href="https://drive.google.com/drive/folders/1ScmHPvpZP_BiiibFgze1WWW3T9I2K15m?usp=sharing">
+                        <img src="img/file-pdf.png" alt="Paper">
+                        <h4><strong>Paper</strong></h4>
+                    </a>
+                </li>
+                <li class="icon-item">
+                    <a href="https://github.com/ivcr200k/ivcr200k.github.io">
+                        <img src="img/github.png" alt="Code">
+                        <h4><strong>Code and Dataset</strong></h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <h2>Abstract</h2>
+    <P>In recent years, significant developments have been made in both video retrieval
+and video moment retrieval tasks, which respectively retrieve complete videos
+or moments for a given text query. These advancements have greatly improved
+user satisfaction during the search process. However, previous work has failed to
+establish meaningful “interaction” between the retrieval system and the user, and
+its one-way retrieval paradigm can no longer fully meet the personalization and
+dynamics of user needs.
+In this paper, we propose a more realistic setting, Interactive Video Corpus Re-
+trieval task (IVCR) that enables multi-turn, conversational, realistic interactions
+between the user and the retrieval system. To facilitate research on this challenging
+task, we introduce IVCR-200K, a bilingual, multi-turn, conversational, abstract se-
+mantic high-quality dataset that supports video retrieval and even moment retrieval.
+Furthermore, we propose a comprehensive framework based on multi-modal large
+language models (MLLMs) to support users’ several interaction modes with more
+explainable solutions. Our extensive experiments demonstrate the effectiveness of
+our dataset and framework. The dataset and code are available at xxx.</P>
+		<hr>
+	    <h2>Datasets</h2>
+	    <p>To implement an interactive video retrieval system, we constructed a multi-turn, conversational
+dataset comprising 193,434 interactions sourced from 5 video repositories. This dataset encompasses
+functionalities such as video retrieval, video moment retrieval, and natural dialogue.</p>
+	    <div class="image-container">
+            <img src="gif/1.gif" style="width: 500px; height: auto; position: relative;">
+            <img src="gif/3.gif" style="width: 500px; height: auto; position: relative;">
+            <img src="gif/4.gif" style="width: 500px; height: auto; position: relative;">
+            <img src="gif/5.gif" style="width: 500px; height: auto; position: relative;">
+</div>
+	        <hr>
+	<h2>Visualization Quality</h2>
+	      <img src="a.png" alt="GIF Image" loop>
+	     <hr>
+	<h2>Framwork</h2>
+	    <img src="tone.png" alt="Paper">
+	        <hr>
+	    <h2>Leaderboards</h2>
+
+<form id="crudForm">
+    <label for="Methods">user:</label>
+    <input type="text" id="user" name="user">
+    <label for="R@10">R@10:</label>
+    <input type="text" id="R@10" name="R@10">
+    <label for="R@1_IoU_0.5">R@1 IoU=0.5:</label>
+    <input type="text" id="R@1_IoU_0.5" name="R@1 IoU=0.5">
+    <label for="R@1_IoU_0.7">R@1 IoU=0.7:</label>
+    <input type="text" id="R@1_IoU_0.7" name="R@1 IoU=0.7">
+    <label for="BLUE-4">BLUE-4:</label>
+    <input type="text" id="BLUE-4" name="BLUE-4">
+    <label for="GPT-4_Score">GPT-4 Score:</label>
+    <input type="text" id="GPT-4_Score" name="GPT-4 Score">
+    <button type="button" onclick="addData()">submit</button>
+</form>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>user</th>
+            <th>R@10</th>
+            <th>R@1 IoU=0.5</th>
+            <th>R@1 IoU=0.7</th>
+            <th>BLUE-4</th>
+            <th>GPT-4 Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- jidfjdi -->
+        <!-- Data will be inserted here dynamically -->
+    </tbody>
+</table>
+
+<script>
+    function addData() {
+        var user = document.getElementById("user").value;
+        var R_10 = document.getElementById("R@10").value;
+        var R_1_IoU_0_5 = document.getElementById("R@1_IoU_0.5").value;
+        var R_1_IoU_0_7 = document.getElementById("R@1_IoU_0.7").value;
+        var BLUE_4 = document.getElementById("BLUE-4").value;
+        var GPT_4_Score = document.getElementById("GPT-4_Score").value;
+        
+        var table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        
+        cell1.innerHTML = user;
+        cell2.innerHTML = R_10;
+        cell3.innerHTML = R_1_IoU_0_5;
+        cell4.innerHTML = R_1_IoU_0_7;
+        cell5.innerHTML = BLUE_4;
+        cell6.innerHTML = GPT_4_Score;
+    }
+
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+    
+    function editRow(btn) {
+        var row = btn.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+        var Types = cells[0].innerHTML;
+        var Methods = cells[1].innerHTML;
+        document.getElementById("user").value = user;
+        row.parentNode.removeChild(row);
+    }
+</script>
+	    <hr>
+</body>
+</html>

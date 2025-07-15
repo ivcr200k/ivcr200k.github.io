@@ -1,0 +1,92 @@
+body { font-family: 'Open Sans', sans-serif; }
+.container { 
+    max-width: 1200px;
+    width: 90%; 
+    margin: 0 auto; 
+    padding: 15px;
+}
+t1,t2{color: #13227a;}
+h1, h2 { color: #333; 
+text-align: center;}
+.authors { margin-top: 50px; text-align: center}
+.authors p{margin-bottom: 5px;line-height: 1.0;}
+.affiliations { margin-bottom: 20px; }
+img { width: 100%; height: auto; display: block; margin: 0 auto;}
+pre {font-size: 18px;text-align: left}
+p {
+    font-size: 18px; 
+    line-height: 1.6; 
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .icon-item img {
+        height: 30px; 
+		transition: filter 0.3s;
+    }
+
+}
+
+.container { 
+    max-width: 1200px;
+    width: 90%; 
+    margin: 0 auto; 
+    padding: 0 15%;  
+    box-sizing: border-box;  /* 添加这一行 */
+}
+
+.icon-item a {
+	    color: #13227a; 
+	    text-decoration: none; 
+	    transition: color 0.3s; 
+}
+
+	.icon-item a:hover {
+	    color: mediumpurple; 
+}
+	
+	.icon-item a:hover img {
+	    filter: brightness(0) saturate(100%) invert(39%) sepia(90%) saturate(3516%) hue-rotate(239deg) brightness(98%) contrast(104%); /
+}
+	
+.icon-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.icon-item {
+    margin: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-item img {
+    height: 40px; 
+	width: 40px;
+    margin-bottom: 5px;
+}
+
+.icon-item h4 {
+    margin: 0;
+}
+
+
+.visualizations img {
+    width: 45%; 
+    margin: 10px 2.5%; 
+    float: left; 
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

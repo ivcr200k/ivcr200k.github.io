@@ -1,0 +1,60 @@
+model:
+  arch: IVCR
+  model_type: pretrain_llama_v2
+  freeze_vit: True
+  freeze_qformer: True
+  max_txt_len: 2048
+  end_sym: "</s>"
+  low_resource: False
+  use_log: false
+
+  frozen_llama_proj: True
+  frozen_video_Qformer: True
+  num_query_token: 32
+
+  vit_model: "/home/longshaohua/Ckpt/eva_vit/eva_vit_g.pth"
+  llama_model: "/home/longshaohua/Llama-2-7b-chat-hf"
+  # llama_model: "/home/longshaohua/Llama-3.2-3B-Instruct"
+  q_former_model: "/home/longshaohua/Ckpt/instruct_blip_vicuna7b_trimmed.pth"
+  ckpt: "/home/longshaohua/IVCR_Result/Train_Result/ckpt/ivcr/first_train/2025_06_16_21_21/checkpoint_4.pth"
+  # ckpt_2: "/home/longshaohua/Ckpt/VL_LLaMA_2_7B_Finetuned.pth"
+  
+  fusion_head_layers: 2
+  max_frame_pos: 64
+  fusion_header_type: "seqTransf"
+
+  use_grad_checkpoint: False
+  lora: True
+  lora_inference_mode: True
+  qformer_text_input: True
+  window_size: 32
+  stride: 32
+  device_8bit: 0
+
+
+datasets:
+  ivcr_instruct:
+    data_type: video
+    build_info:
+      anno_dir : "/home/longshaohua/Dataset/use_xpool_top10/IVCR_no_type0_no_zero_dialogues_test.json"
+      videos_dir : "/home/longshaohua/Dataset/ivcr_compress"
+      vid_vname_dir: "/home/longshaohua/Dataset/use_xpool_top10/IVCR_no_type0_no_zero_dialogues_video_list_test.json"
+    vis_processor:
+      train:
+        name: "alpro_video_eval"
+        n_frms: 64
+        image_size: 224
+    text_processor:
+      train:
+        name: "blip_caption"
+    num_video_query_token: 32
+    model_type: "llama_v2"
+    num_frm: 64
+    v_frms: 12
+    sample_type: 'rand'
+    max_txt_len: 2048
+    stride: 32
+
+run:
+  task: video_text_pretrain
+  output_dir: "/home/longshaohua/IVCR_Result/Eval_Result/2025_06_16_21_21/4/"
